@@ -11,6 +11,9 @@
         <!-- Main Content Card -->
         <div class="card">
             <div class="card-content">
+                <div class="gif-container">
+                    <img id="exercise-gif" src="" alt="Exercise animation" style="display: none;">
+                </div>
                 <h1 id="exercise"></h1>
                 <p class="card-text">Yap 😄</p>
             </div>
@@ -30,6 +33,18 @@
             'Pull-ups'
         ];
 
+        const exerciseGifs = {
+            'Burpees': 'gif/burpees.gif',
+            'Push-ups': 'gif/pushups.gif',
+            'Squats': 'gif/squats.gif',
+            'Sit-ups': 'gif/situps.gif',
+            'Lunges': 'gif/lunges.gif',
+            'Jumping Jacks': 'gif/jumpingjacks.gif',
+            'Mountain Climbers': 'gif/mountainclimbers.gif',
+            'High Knees': 'gif/highknees.gif',
+            'Pull-ups': 'gif/pullups.gif'
+        };
+
         const numbers = [5, 10, 15];
 
         function getRandomExercise() {
@@ -38,7 +53,18 @@
             return `${randomNumber} ${randomExercise}`;
         }
 
-        document.getElementById('exercise').textContent = getRandomExercise();
+        function displayExercise() {
+            const exerciseText = getRandomExercise();
+            const exerciseName = exerciseText.split(' ').slice(1).join(' ');
+            
+            document.getElementById('exercise').textContent = exerciseText;
+            
+            const gifElement = document.getElementById('exercise-gif');
+            gifElement.src = exerciseGifs[exerciseName];
+            gifElement.style.display = 'block';
+        }
+
+        displayExercise();
     </script>
 </body>
 </html>
